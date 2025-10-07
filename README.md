@@ -33,5 +33,3 @@ A simple **Spring Boot** application for admin login and managing student attend
 
 
 
-mvn clean install
-mvn spring-boot:run
