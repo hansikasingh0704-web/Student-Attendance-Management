@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Attendance Summary</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="/dashboard"><i class="bi bi-clipboard-check"></i> Attendance</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link" href="/students">Students</a></li>
+                <li class="nav-item"><a class="nav-link" href="/attendance">Attendance</a></li>
+            </ul>
+            <a class="btn btn-light btn-sm" href="/logout"><i class="bi bi-box-arrow-right"></i> Logout</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="fw-bold text-primary"><i class="bi bi-person-lines-fill"></i> Summary - <span th:text="${student.name}"></span></h3>
+        <a href="/students" class="btn btn-outline-secondary btn-sm"><i class="bi bi-arrow-left-circle"></i> Back</a>
+    </div>
+
+    <!-- Stats -->
+    <div class="alert alert-info shadow-sm rounded-3">
+        Total records: <b th:text="${total}"></b> |
+        Present: <b th:text="${present}"></b> |
+        Percentage: <b th:text="${percent}"></b>%
+    </div>
+
+    <!-- Table -->
+    <div class="card shadow-sm rounded-3">
+        <div class="card-body">
+            <table class="table table-striped align-middle">
+                <thead class="table-primary">
+                <tr>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="r : ${records}">
+                    <td th:text="${r.attendanceDate}"></td>
+                    <td>
+                      <span th:text="${r.status}"
+                            th:classappend="${r.status} == 'PRESENT' ? 'badge bg-success' : 'badge bg-danger'">
+                      </span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<footer class="mt-5 py-3 text-center text-muted small">
+    © Attendance System
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

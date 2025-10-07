@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Attendance</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="/dashboard"><i class="bi bi-clipboard-check"></i> Attendance</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item"><a class="nav-link" href="/students">Students</a></li>
+                <li class="nav-item"><a class="nav-link active" href="/attendance">Attendance</a></li>
+            </ul>
+            <a class="btn btn-light btn-sm" href="/logout"><i class="bi bi-box-arrow-right"></i> Logout</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-4">
+
+    <!-- Flash Messages -->
+    <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+    <div th:if="${success}" class="alert alert-success" th:text="${success}"></div>
+
+    <!-- Header -->
+    <div class="d-flex justify-content-between mb-3">
+        <h3 class="fw-bold text-primary">Attendance - <span th:text="${date}"></span></h3>
+        <div>
+            <a th:href="@{'/attendance/mark?date=' + ${date}}" class="btn btn-primary btn-sm">
+                <i class="bi bi-pencil-square"></i> Mark Attendance
+            </a>
+            <a href="/dashboard" class="btn btn-outline-secondary btn-sm"><i class="bi bi-speedometer2"></i> Dashboard</a>
+        </div>
+    </div>
+
+    <!-- Table -->
+    <div class="card shadow-sm rounded-3">
+        <div class="card-body">
+            <table class="table table-hover align-middle">
+                <thead class="table-primary">
+                <tr>
+                    <th>ID</th>
+                    <th>Roll</th>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="r : ${records}">
+                    <td th:text="${r.attendanceId}"></td>
+                    <td th:text="${r.student.rollNumber}"></td>
+                    <td th:text="${r.student.name}"></td>
+                    <td>
+                  <span th:text="${r.status}"
+                        th:classappend="${r.status} == 'PRESENT' ? 'badge bg-success' : 'badge bg-danger'">
+                  </span>
+                    </td>
+                    <td>
+                        <a th:href="@{'/attendance/edit/' + ${r.attendanceId}}" class="btn btn-sm btn-warning">
+                            <i class="bi bi-pencil-square"></i> Edit
+                        </a>
+                        <a th:href="@{'/attendance/delete/' + ${r.attendanceId}}"
+                           class="btn btn-sm btn-danger"
+                           data-confirm="Are you sure you want to delete this record?">
+                            <i class="bi bi-trash3-fill"></i> Delete
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<footer class="mt-5 py-3 text-center text-muted small">
+    © Attendance System
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.addEventListener('click', function(e){
+        var el = e.target.closest('[data-confirm]');
+        if(el){
+            var msg = el.getAttribute('data-confirm') || 'Are you sure?';
+            if(!confirm(msg)){
+                e.preventDefault();
+                e.stopPropagation();
+            }
+        }
+    }, true);
+</script>
+</body>
+</html>

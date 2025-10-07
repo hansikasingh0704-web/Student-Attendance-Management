@@ -1,0 +1,14 @@
+/Users/krishnaaa/IdeaProjects/JavaWeb/src/main/java/com/example/attendance/controller/DashboardController.java
+/Users/krishnaaa/IdeaProjects/JavaWeb/src/main/java/com/example/attendance/entity/Admin.java
+/Users/krishnaaa/IdeaProjects/JavaWeb/src/main/java/com/example/attendance/service/StudentService.java
+/Users/krishnaaa/IdeaProjects/JavaWeb/src/main/java/com/example/attendance/service/AdminService.java
+/Users/krishnaaa/IdeaProjects/JavaWeb/src/main/java/com/example/attendance/entity/Attendance.java
+/Users/krishnaaa/IdeaProjects/JavaWeb/src/main/java/com/example/attendance/controller/LoginController.java
+/Users/krishnaaa/IdeaProjects/JavaWeb/src/main/java/com/example/attendance/service/AttendanceService.java
+/Users/krishnaaa/IdeaProjects/JavaWeb/src/main/java/com/example/attendance/repository/StudentRepository.java
+/Users/krishnaaa/IdeaProjects/JavaWeb/src/main/java/com/example/attendance/controller/StudentController.java
+/Users/krishnaaa/IdeaProjects/JavaWeb/src/main/java/com/example/attendance/repository/AttendanceRepository.java
+/Users/krishnaaa/IdeaProjects/JavaWeb/src/main/java/com/example/attendance/entity/Student.java
+/Users/krishnaaa/IdeaProjects/JavaWeb/src/main/java/com/example/attendance/controller/AttendanceController.java
+/Users/krishnaaa/IdeaProjects/JavaWeb/src/main/java/com/example/attendance/StudentAttendanceApplication.java
+/Users/krishnaaa/IdeaProjects/JavaWeb/src/main/java/com/example/attendance/repository/AdminRepository.java
